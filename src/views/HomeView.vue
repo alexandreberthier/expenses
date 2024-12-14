@@ -51,14 +51,12 @@
 </template>
 
 
-
-
 <script setup lang="ts">
 import InputField from "@/components/InputField.vue";
 import Toggle from "@/components/Toggle.vue";
 import {computed, onMounted, ref, watch} from "vue";
-import { Chart, registerables } from "chart.js";
-import { useExpensesStore } from "@/stores/expenses";
+import {Chart, registerables} from "chart.js";
+import {useExpensesStore} from "@/stores/expenses";
 import {getImage} from "@/utils/ImageUtils.ts";
 
 // Chart.js registrieren
@@ -73,15 +71,15 @@ const selectedType = ref<string>("");
 
 // Optionen
 const userOptions = ref([
-  { label: "Christiane", value: "Christiane" },
-  { label: "Alex", value: "Alex" },
+  {label: "Christiane", value: "Christiane"},
+  {label: "Alex", value: "Alex"},
 ]);
 
 const typeOptions = ref([
-  { label: "Einkaufen", value: "Einkaufen", icon: "ic_cart.png" },
-  { label: "Flo", value: "Flo", icon: "ic_baby.png" },
-  { label: "Essen", value: "Essen", icon: "ic_liefer.png" },
-  { label: "Freizeit", value: "Freizeit", icon: "ic_freizeit.png" },
+  {label: "Einkaufen", value: "Einkaufen", icon: "ic_cart.png"},
+  {label: "Flo", value: "Flo", icon: "ic_baby.png"},
+  {label: "Essen", value: "Essen", icon: "ic_liefer.png"},
+  {label: "Freizeit", value: "Freizeit", icon: "ic_freizeit.png"},
 ]);
 
 const differenceMessage = computed(() => {
@@ -103,6 +101,8 @@ const saveExpense = async () => {
   if (!userExpense.value || !selectedUser.value || !selectedType.value) {
     userError.value = "Bitte alle Felder ausfüllen!";
     return;
+  } else {
+    userError.value = '';
   }
 
   const newExpense = {
